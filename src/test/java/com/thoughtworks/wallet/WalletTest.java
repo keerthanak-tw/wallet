@@ -8,35 +8,28 @@ public class WalletTest {
     @Test
     void shouldReturnTotalAmountWhenMoneyIsAddedToWallet() {
         Wallet wallet = new Wallet();
-        Money amount = new Money(100, CurrencyType.Rupee);
-        wallet.addAmount(amount);
+        wallet.addAmount(CurrencyType.Rupee, 100);
 
-        assertEquals(100, wallet.rupeeAmount);
+        assertEquals(100, wallet.getTotalRupeeAmount());
     }
 
     @Test
-    void shouldReturnBalanceAmountWhenMoneyIsTakenFromWallet() {
+    void shouldReturnBalanceAmountWhenMoneyIsTakenFromWallet() throws NoEnoughMoneyException, OutOfMoneyException {
         Wallet wallet = new Wallet();
-        Money addMoney = new Money(100, CurrencyType.Rupee);
-        Money takeMoney = new Money(52, CurrencyType.Rupee);
 
+        wallet.addAmount(CurrencyType.Rupee, 100);
+        wallet.takeAmount(CurrencyType.Rupee, 52);
 
-        wallet.addAmount(addMoney);
-        wallet.takeAmount(takeMoney);
-
-        assertEquals(48, wallet.rupeeAmount);
+        assertEquals(48, wallet.getTotalRupeeAmount());
     }
 
     @Test
     void shouldReturnTotalAmountInRupees() {
 
         Wallet wallet = new Wallet();
-        Money rupee = new Money(50, CurrencyType.Rupee);
-        Money dollar = new Money(1, CurrencyType.Dollar);
 
-
-        wallet.addAmount(rupee);
-        wallet.addAmount(dollar);
+        wallet.addAmount(CurrencyType.Rupee, 50);
+        wallet.addAmount(CurrencyType.Dollar, 1);
 
         assertEquals(124.85, wallet.getTotalRupeeAmount(), 0.15);
     }
@@ -44,15 +37,12 @@ public class WalletTest {
     @Test
     void shouldReturnTotalAmountInDollars() {
         Wallet wallet = new Wallet();
-        Money rupeeOne = new Money(74.85, CurrencyType.Rupee);
-        Money dollar = new Money(1, CurrencyType.Dollar);
-        Money rupeeTwo = new Money(149.7, CurrencyType.Rupee);
 
-
-        wallet.addAmount(rupeeOne);
-        wallet.addAmount(dollar);
-        wallet.addAmount(rupeeTwo);
+        wallet.addAmount(CurrencyType.Rupee, 74.85);
+        wallet.addAmount(CurrencyType.Dollar, 1);
+        wallet.addAmount(CurrencyType.Rupee, 149.7);
 
         assertEquals(4, wallet.getTotalDollarAmount(), 0.15);
+        System.out.println(wallet.moneySet);
     }
 }

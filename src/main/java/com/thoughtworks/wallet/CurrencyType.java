@@ -9,4 +9,8 @@ public enum CurrencyType {
     CurrencyType(double value) {
         this.equivalence = value;
     }
-};
+
+    public static double getRupeeValue() {
+        return Rupee.equivalence;
+    }
+}
