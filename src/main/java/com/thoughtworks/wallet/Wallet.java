@@ -7,7 +7,10 @@ public class Wallet {
         this.totalBalance = initialMoney;
     }
 
-    public void addMoney(Money money) {
+    public void addAmount(Money money) {
         this.totalBalance += money.amount;
+    }
+
+    public void takeAmount(Money money) { this.totalBalance -= money.amount;
     }
 }
