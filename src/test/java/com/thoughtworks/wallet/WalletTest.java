@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WalletTest {
     @Test
-    void shouldReturnTotalAmountWhenMoneyIsAddedToWallet() {
+    void shouldReturnTotalAmountInRupeesWhenRupeeIsDepositedInWallet() {
         Wallet wallet = new Wallet();
         wallet.deposit(CurrencyType.Rupee, 100);
 
@@ -16,7 +16,7 @@ public class WalletTest {
     }
 
     @Test
-    void shouldReturnBalanceAmountWhenMoneyIsTakenFromWallet() throws OutOfBalanceException, NoDenominationException {
+    void shouldReturnBalanceAmountInRupeeWhenMoneyIsWithdrawnFromWallet() throws OutOfBalanceException, NoDenominationException {
         Wallet wallet = new Wallet();
 
         wallet.deposit(CurrencyType.Rupee, 100);
@@ -26,7 +26,7 @@ public class WalletTest {
     }
 
     @Test
-    void shouldReturnTotalAmountInRupees() {
+    void shouldReturnTotalBalanceInRupees() {
 
         Wallet wallet = new Wallet();
 
@@ -37,7 +37,7 @@ public class WalletTest {
     }
 
     @Test
-    void shouldReturnTotalAmountInDollars() {
+    void shouldReturnTotalBalanceInDollars() {
         Wallet wallet = new Wallet();
 
         wallet.deposit(CurrencyType.Rupee, 74.85);
