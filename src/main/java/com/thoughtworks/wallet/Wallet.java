@@ -8,7 +8,7 @@ public class Wallet {
     HashMap<CurrencyType, Double> moneySet = new HashMap<>();
 
 
-    public void addAmount(CurrencyType type, double amount) {
+    public void deposit(CurrencyType type, double amount) {
         if ( moneySet.get(type) == null) {
             moneySet.put(type, amount);
         }
@@ -18,36 +18,33 @@ public class Wallet {
         }
     }
 
-    public void takeAmount(CurrencyType type, double amount) throws OutOfMoneyException, NoEnoughMoneyException {
+    public void withdraw(CurrencyType type, double amount) throws NoDenominationException, OutOfBalanceException {
         if ( moneySet.get(type) == null) {
-            throw new OutOfMoneyException();
+            throw new NoDenominationException();
         }
         else {
             this.amount = moneySet.get(type);
             if ( this.amount < amount){
-                throw new NoEnoughMoneyException();
+                throw new OutOfBalanceException();
             }
             this.amount -= amount;
             moneySet.put(type, this.amount);
         }
     }
 
-    public double getTotalRupeeAmount() {
-        double totalRupeeAmount = 0;
+    public double getTotalAmount(CurrencyType type) {
+        double totalAmount = 0;
 
         for (Object o : moneySet.entrySet()) {
             var mapElement = (Entry) o;
             CurrencyType key = (CurrencyType) mapElement.getKey();
             if (key == CurrencyType.Rupee) {
-                totalRupeeAmount += (double) mapElement.getValue();
+                totalAmount += (double) mapElement.getValue();
             } else {
-                totalRupeeAmount += (double) mapElement.getValue() * CurrencyType.getRupeeValue();
+                totalAmount += (double) mapElement.getValue() * CurrencyType.getRupeeValue();
             }
         }
-        return totalRupeeAmount;
+        return type.equals(CurrencyType.Rupee)?totalAmount:totalAmount/CurrencyType.getRupeeValue();
     }
 
-    public double getTotalDollarAmount() {
-        return getTotalRupeeAmount() / CurrencyType.getRupeeValue();
-    }
 }
