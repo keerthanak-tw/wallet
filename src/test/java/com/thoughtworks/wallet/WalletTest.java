@@ -1,5 +1,8 @@
 package com.thoughtworks.wallet;
 
+import com.thoughtworks.wallet.enums.CurrencyType;
+import com.thoughtworks.wallet.exceptions.NoDenominationException;
+import com.thoughtworks.wallet.exceptions.OutOfBalanceException;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

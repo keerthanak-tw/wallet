@@ -1,5 +1,9 @@
 package com.thoughtworks.wallet;
 
+import com.thoughtworks.wallet.enums.CurrencyType;
+import com.thoughtworks.wallet.exceptions.NoDenominationException;
+import com.thoughtworks.wallet.exceptions.OutOfBalanceException;
+
 import java.util.HashMap;
 import java.util.Map.Entry;
 

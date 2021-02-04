@@ -1,4 +1,4 @@
-package com.thoughtworks.wallet;
+package com.thoughtworks.wallet.exceptions;
 
 public class OutOfBalanceException extends Exception {
 }
