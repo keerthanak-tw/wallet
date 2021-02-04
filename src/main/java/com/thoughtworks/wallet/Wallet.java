@@ -42,11 +42,7 @@ public class Wallet {
         for (Object o : moneySet.entrySet()) {
             var mapElement = (Entry) o;
             CurrencyType key = (CurrencyType) mapElement.getKey();
-            if (key == CurrencyType.Rupee) {
-                totalAmount += (double) mapElement.getValue();
-            } else {
-                totalAmount += (double) mapElement.getValue() * CurrencyType.getRupeeValue();
-            }
+            totalAmount += key == CurrencyType.Rupee ? (double) mapElement.getValue() : (double) mapElement.getValue() * CurrencyType.getRupeeValue();
         }
         return type.equals(CurrencyType.Rupee)?totalAmount:totalAmount/CurrencyType.getRupeeValue();
     }
