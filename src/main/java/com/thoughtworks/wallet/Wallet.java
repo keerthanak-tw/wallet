@@ -23,19 +23,18 @@ public class Wallet {
 
     public void withdraw(CurrencyValue currency) throws OutOfBalanceException {
         if (currency.type.equals(CurrencyType.Rupee)) {
-            if (checkBalance(rupee.amount, currency.amount)) {
+            if (!checkBalance(rupee.amount, currency.amount)) {
+                throw new OutOfBalanceException();
+            } else {
                 amount = rupee.amount - currency.amount;
                 rupee = new CurrencyValue(currency.type, amount);
-            } else {
-                throw new OutOfBalanceException();
             }
         } else {
-            if (checkBalance(dollar.amount, currency.amount)) {
+            if (!checkBalance(dollar.amount, currency.amount)) {
+                throw new OutOfBalanceException();
+            } else {
                 amount = dollar.amount - currency.amount;
                 dollar = new CurrencyValue(currency.type, amount);
-            }
-            else {
-                throw new OutOfBalanceException();
             }
         }
     }
