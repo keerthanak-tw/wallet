@@ -1,6 +1,4 @@
-package com.thoughtworks.wallet;
-
-import com.thoughtworks.wallet.enums.CurrencyType;
+package com.thoughtworks.wallet.currency;
 
 public class CurrencyValue {
 

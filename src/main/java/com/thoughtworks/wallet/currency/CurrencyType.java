@@ -1,4 +1,4 @@
-package com.thoughtworks.wallet.enums;
+package com.thoughtworks.wallet.currency;
 
 public enum CurrencyType {
     Rupee(74.85),

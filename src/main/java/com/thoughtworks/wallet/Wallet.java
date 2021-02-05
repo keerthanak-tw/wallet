@@ -1,6 +1,7 @@
 package com.thoughtworks.wallet;
 
-import com.thoughtworks.wallet.enums.CurrencyType;
+import com.thoughtworks.wallet.currency.CurrencyType;
+import com.thoughtworks.wallet.currency.CurrencyValue;
 import com.thoughtworks.wallet.exceptions.OutOfBalanceException;
 
 
